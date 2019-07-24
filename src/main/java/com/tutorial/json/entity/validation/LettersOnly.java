@@ -8,12 +8,17 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
+/**
+ * This is the custom validation. Field should contain only letters and no other symbols.
+ * @author jreyb
+ *
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = { LettersOnly.Validator.class })
 public @interface LettersOnly {
 	String message()
 
-    default "Fruit serial number is not valid";
+    default "Value should be letters only";
 
     Class<?>[] groups() default {};
 
@@ -22,10 +27,7 @@ public @interface LettersOnly {
 	public static class Validator implements ConstraintValidator<LettersOnly, String> {
 		@Override
 		public boolean isValid(String value, ConstraintValidatorContext context) {
-//			if (value has number)
-//				return false
-			System.out.println("LettersOnly");
-			return true;
+			return value.chars().allMatch(Character::isLetter);
 		}
 	}
 }

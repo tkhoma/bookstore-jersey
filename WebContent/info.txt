@@ -16,15 +16,5 @@ http://localhost:8080/json_tutorial/registrationForm.html
 
 
 TODO:
-1) add Size annotation to all properties in UserDto.
-Edit message of this this annotation 
-
-2) implement String check for number in LettersOnly annotation
-it's in Validator static class in isValid method.
-put this annotation on lastName field too
-specify correct messages for both fields
-
-We do validation only in UserDto class.
-
-3) update User table in the database to have correct fields like
-our User entity.
+1) add custom email validation
+2) add validation for password and confirmPassword

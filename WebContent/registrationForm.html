@@ -173,10 +173,17 @@ function submitUser(e) {
 	    },
 	    error: function(data) {
 	    	var alertBox = $('div#alertBox');
-	    	alertBox.html(data.responseText);
+	    	var errors = JSON.parse(data.responseText);
+	    	var errorMessages = '<ul>';
+	    	errors.forEach(function(error) {
+	    		errorMessages += '<li>';
+	    		errorMessages += error.title;
+	    		errorMessages += '</li>';
+	    	});
+	    	errorMessages += '</ul>';
+	    	alertBox.html(errorMessages);
 	    	alertBox.show();
 	    	console.log('error handler was called');
-	    	console.log(data);
 	    }
 	});
 }

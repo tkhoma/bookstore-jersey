@@ -19,11 +19,14 @@ public class BookstoreExceptionMapper implements ExceptionMapper<ConstraintViola
 		StringBuilder message = new StringBuilder();
 		message.append("[");
         for (ConstraintViolation<?> cv : exception.getConstraintViolations()) {
+        	if (message.length() > 1) {
+        		message.append(",");
+        	}
             message
             	.append("{")
-            	.append("\"title\": ")
+            	.append("\"title\": \"")
             	.append(cv.getMessage())
-            	.append("}");
+            	.append("\"}");
         }
         message.append("]");
         return message.toString();

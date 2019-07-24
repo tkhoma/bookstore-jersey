@@ -6,6 +6,7 @@ import org.glassfish.jersey.process.internal.RequestScoped;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
+import com.tutorial.json.exception.BookstoreExceptionMapper;
 import com.tutorial.json.resources.GreetingResource;
 import com.tutorial.json.resources.UserResource;
 import com.tutorial.json.resources.dao.DbConnection;
@@ -21,6 +22,7 @@ public class ApplicationConfig extends ResourceConfig {
 		property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
 		register(GreetingResource.class);
 		register(UserResource.class);
+		register(BookstoreExceptionMapper.class);
 		register(new AbstractBinder() {
 
 			@Override
